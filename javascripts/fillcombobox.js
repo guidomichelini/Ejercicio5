@@ -4,6 +4,8 @@ var option='Name'
 var rows = 3;
 var cols = 3;
 
+console.log("ENTRO")
+
 function betterWorkSites() {
     fetch('https://api.mercadolibre.com/sites')
         .then(function (response) {
@@ -24,7 +26,6 @@ function betterWorkSites() {
 
                 sel.appendChild(opt); // add it to the select
             }
-
 
         });
 
