@@ -1,10 +1,7 @@
 function getTrends(trendsVector, rows, cols) {
 
     var container = document.getElementById('trends');
-
-
 // slide options
-
     if (trendsVector !== null) {
         var slideEase = function (t) {
                 return t * t * t;
@@ -188,7 +185,7 @@ function getTrends(trendsVector, rows, cols) {
         }
         console.log("Entro acá")
         var h1 = document.createElement('h1');
-        h1.textContent = 'NO SE ENCONTRÓ UN PAPO';
+        h1.textContent = 'No se encontaron resultados';
         container.appendChild(h1)
     }
 

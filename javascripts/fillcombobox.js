@@ -111,12 +111,9 @@ function getTrendsBySite() {
             .then(function (response) {
                 return response.json();
             })
-
-
             .then(function (trends) {
                 console.log(trends)
                 var res = new Array()
-
                 if (trends !== null) {
 
                     for (var i in trends) { // loop through all elements
@@ -125,8 +122,6 @@ function getTrendsBySite() {
                 } else {
                     res = null
                 }
-
-
                 getTrends(res, rows, cols)
 
             });
