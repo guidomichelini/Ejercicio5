@@ -12,10 +12,40 @@
 
 <div class="form-group">
     <label for="sitesdropdown">Selecciona el Site:</label>
-    <select class="form-control" id="sitesdropdown" name="sitesdropdown" onchange="printSelectedSiteId(this)">
+    <select class="form-control" id="sitesdropdown" name="sitesdropdown" onchange="setSiteId(this)">
 
     </select>
 </div>
+
+<div class="form-group">
+    <label for="categorydropdown">Selecciona la categoría:</label>
+    <select class="form-control" id="categorydropdown" name="categorydropdown" onchange="setCategoryId(this)">
+        <option value='None'>Seleccione una categoría</option>
+    </select>
+</div>
+
+<div id="trendsDimmensions">
+    <label for="rows">Filas:</label>
+    <select class="form-control" id="rows" name="rows" onchange="setRows(this)">
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+
+    </select>
+    <label for="columns">Columnas:</label>
+    <select class="form-control" id="columns" name="columns" onchange="setColumns(this)">
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+
+    </select>
+
+</div>
+
+<div id="btn-trends" onclick="getTrendsBySite()">
+    <button type="button">Buscar tendencias</button>
+</div>
+
 
 <div class="trendsDiv" id="trends">
 

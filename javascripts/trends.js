@@ -1,5 +1,5 @@
 
-function getTrends(trendsVector){
+function getTrends(trendsVector,rows,cols){
 
     var container = document.getElementById('trends');
 
@@ -151,8 +151,8 @@ function getTrends(trendsVector){
 // create the cells
     var cells = [];
 
-    var col = 3;
-    var row = 1;
+    var col = cols;
+    var row = rows;
 
     for (var i = 0; i < (col*row); i++) {
         cells[i] = new Cell(i % col, Math.floor(i / col));

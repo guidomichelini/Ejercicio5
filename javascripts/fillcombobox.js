@@ -1,12 +1,16 @@
+var siteId = 'None';
+var categoryId = 'None';
+var rows = 3;
+var cols = 3;
 
-function betterWorkSites(){
+function betterWorkSites() {
     fetch('https://api.mercadolibre.com/sites')
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
 
 
-        .then(function(sites) {
+        .then(function (sites) {
             var sel = document.getElementById('sitesdropdown') // find the drop down
             var opt = document.createElement("option"); // Create the new element
             opt.value = 'None'; // set the value
@@ -27,43 +31,104 @@ function betterWorkSites(){
 
 }
 
-function printSelectedSiteId(selectedSite){
-    var siteId= selectedSite.options[selectedSite.selectedIndex].value;
+function betterWorkCategories(siteId) {
+    var sel = document.getElementById('categorydropdown') // find the drop down
+    clearOptions(sel)
 
-    if(siteId==='None'){
+    var opt = document.createElement("option"); // Create the new element
+    opt.value = 'None'; // set the value
+    opt.text = 'Seleccione una categoría'; // set the text+
+    sel.appendChild(opt);
+
+    if (siteId == 'None') {
+
+    } else {
+        fetch('https://api.mercadolibre.com/sites/' + siteId + '/categories')
+            .then(function (response) {
+                return response.json();
+            })
+
+
+            .then(function (categories) {
+
+                if (categories.length == 0) {
+
+                } else {
+                    for (var i in categories) { // loop through all elements
+                        var opt = document.createElement("option"); // Create the new element
+                        opt.value = categories[i].id; // set the value
+                        opt.text = categories[i].name; // set the text
+
+                        sel.appendChild(opt); // add it to the select
+                    }
+                }
+
+            });
+    }
+
+
+}
+
+function setSiteId(selectedSite) {
+    siteId = selectedSite.options[selectedSite.selectedIndex].value;
+    betterWorkCategories(siteId);
+}
+
+function setCategoryId(selectedCategory) {
+    categoryId = selectedCategory.options[selectedCategory.selectedIndex].value;
+
+}
+
+function setRows(rowsDropdown) {
+    rows = parseInt(rowsDropdown.options[rowsDropdown.selectedIndex].value, 10);
+
+}
+
+function setColumns(colsDropdown) {
+    cols = parseInt(colsDropdown.options[colsDropdown.selectedIndex].value, 10);
+
+}
+
+
+function getTrendsBySite() {
+    if (siteId === 'None') {
         console.log('No seleccionó Site')
-    }
-    else{
+    } else {
         console.log('Selecciona un site')
-
-
-
-        getTrendsBySite(siteId)
         //fill category combobox
+
+        var url = 'https://api.mercadolibre.com/trends/' + siteId
+
+        if(categoryId!='None'){
+            url=url+'/'+categoryId
+        }
+
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+
+
+            .then(function (trends) {
+                var res = new Array()
+
+                for (var i in trends) { // loop through all elements
+                    res.push(trends[i].keyword)
+                }
+
+
+                getTrends(res, rows, cols)
+            });
     }
 
 }
 
-function getTrendsBySite(siteId){
-    var url = 'https://api.mercadolibre.com/trends/'+siteId
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-
-
-        .then(function(trends) {
-            var res= new Array()
-
-            for (var i in trends) { // loop through all elements
-                res.push(trends[i].keyword)
-            }
-            console(res)
-
-            getTrends(res)
-        });
-
+function clearOptions(comboBox) {
+    while (comboBox.options.length > 0) {
+        comboBox.remove(0);
+    }
 }
+
 
 betterWorkSites()
 
