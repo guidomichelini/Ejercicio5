@@ -8,8 +8,6 @@ function betterWorkSites() {
         .then(function (response) {
             return response.json();
         })
-
-
         .then(function (sites) {
             var sel = document.getElementById('sitesdropdown') // find the drop down
             var opt = document.createElement("option"); // Create the new element
@@ -58,7 +56,6 @@ function betterWorkCategories(siteId) {
                         var opt = document.createElement("option"); // Create the new element
                         opt.value = categories[i].id; // set the value
                         opt.text = categories[i].name; // set the text
-
                         sel.appendChild(opt); // add it to the select
                     }
                 }
@@ -99,8 +96,8 @@ function getTrendsBySite() {
 
         var url = 'https://api.mercadolibre.com/trends/' + siteId
 
-        if(categoryId!='None'){
-            url=url+'/'+categoryId
+        if (categoryId != 'None') {
+            url = url + '/' + categoryId
         }
 
         fetch(url)
@@ -110,14 +107,21 @@ function getTrendsBySite() {
 
 
             .then(function (trends) {
+                console.log(trends)
                 var res = new Array()
 
-                for (var i in trends) { // loop through all elements
-                    res.push(trends[i].keyword)
+                if (trends !== null) {
+
+                    for (var i in trends) { // loop through all elements
+                        res.push(trends[i].keyword)
+                    }
+                } else {
+                    res = null
                 }
 
 
                 getTrends(res, rows, cols)
+
             });
     }
 

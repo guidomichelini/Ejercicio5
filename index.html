@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Tendencias de MeLi</title>
     <link href="stylesheets/trends.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="./javascripts/fillcombobox.js"></script>
 
 </head>
@@ -24,7 +24,7 @@
     </select>
 </div>
 
-<div id="trendsDimmensions">
+<div id="trendsDimensions">
     <label for="rows">Filas:</label>
     <select class="form-control" id="rows" name="rows" onchange="setRows(this)">
         <option>3</option>
@@ -42,8 +42,8 @@
 
 </div>
 
-<div id="btn-trends" onclick="getTrendsBySite()">
-    <button type="button">Buscar tendencias</button>
+<div id="btn-trends">
+    <button type="button" onclick="getTrendsBySite()">Buscar tendencias</button>
 </div>
 
 
