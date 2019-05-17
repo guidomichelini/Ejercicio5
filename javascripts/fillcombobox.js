@@ -1,5 +1,6 @@
 var siteId = 'None';
 var categoryId = 'None';
+var option='Name'
 var rows = 3;
 var cols = 3;
 
@@ -84,6 +85,11 @@ function setRows(rowsDropdown) {
 function setColumns(colsDropdown) {
     cols = parseInt(colsDropdown.options[colsDropdown.selectedIndex].value, 10);
 
+}
+
+function setOption(optionRadio){
+    option=optionRadio.value
+    console.log(option)
 }
 
 

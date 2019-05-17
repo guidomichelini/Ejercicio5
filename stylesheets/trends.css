@@ -7,9 +7,46 @@ html, body {
 
     width: 100%;
     height: 100%;
-    top: 100px;
+    top:-320px;
+    left: 350px;
+}
+
+.dropdown-size{
+    width:300px;
+    margin-left: 10px;
+}
+
+.dimension-size{
+    width:50px;
+    margin-left: 10px;
+}
+
+.cols-pos{
+    position:relative;
+    bottom:70px;
     left: 100px;
 }
+
+.radio-margin{
+    position:relative;
+    bottom: 40px;
+    margin-left:10px;
+}
+
+.radio-image-div{
+    position:relative;
+    bottom:70px;
+    left: 100px;
+}
+
+
+.btn-div{
+    margin-top:5px;
+    margin-left: 10px;
+    position:relative;
+    bottom:50px;
+}
+
 
 .cell, .pane {
     position: absolute;
